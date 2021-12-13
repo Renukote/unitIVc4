@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Show = require('../models/shows.model');
-const Theatre = equire('../models/theatre.model');
+const Show = require('../models/shows.model')
 
 router.get("/seats/:id", async(req, res) => {
     const show = await Show.find({movie: req.params.id}, { "total_seats": true}).lean().exec();
@@ -24,15 +23,12 @@ router.post("/", async(req, res) => {
     res.status(201).send(show);
 })
 
-router.get("/nearest/:location", async(req, res) => {
-    let theatre = await Theatre.find({"location": req.params.location}).lean().exec();
-    console.log(theatre);
+// router.get("/nearest/location", async(req, res) => {
+//     const show = await Show.find(req.params.id).lean().exec();
+//     console.log(show);
 
-    res.status(201).send(theatre);
-})
-
-
+//     res.status(201).send(show);
+// })
 
 module.exports = router;
 
-// 61b724d13c1f8fb278770a1e

@@ -49,7 +49,7 @@ const login = async (req, res) => {
         }
 
         console.log(user);
-        const match = await user.comparePassword(req.body.password)
+        const match = await user.pass(req.body.password)
 
         // pass not match
         if (!match) {

@@ -1,5 +1,5 @@
 const { Schema, model } = require("mongoose");
-const bcrypt = require("bcryptjs");
+const bcrypt = require('bcryptjs');
 
 const userSchema = new Schema({
     name: { type: String, required: true },
@@ -17,7 +17,8 @@ userSchema.pre("save", async function (next) {
     return next();
 });
 
-userSchema.methods.comparePassword  = function (password) {
+
+userSchema.methods.pass  = function (password) {
     return new Promise((resolve, reject) => {
         bcrypt.compare(password, this.password, function(err, match) {
             if(err) return reject(err);
